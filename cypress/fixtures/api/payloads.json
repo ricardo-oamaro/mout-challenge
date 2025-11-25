@@ -1,0 +1,26 @@
+{
+  "userData": {
+    "nome": "Usuario API Test",
+    "email": "usuarioapi@teste.com",
+    "password": "senha123",
+    "administrador": "false"
+  },
+  "adminUserData": {
+    "nome": "Admin API Test",
+    "email": "adminapi@teste.com",
+    "password": "admin123",
+    "administrador": "true"
+  },
+  "productData": {
+    "nome": "Produto API Test",
+    "preco": 100,
+    "descricao": "Produto criado via API para testes",
+    "quantidade": 10
+  },
+  "loginData": {
+    "email": "adminapi@teste.com",
+    "password": "admin123"
+  }
+}
+
+

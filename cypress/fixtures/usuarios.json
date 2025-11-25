@@ -1,0 +1,22 @@
+{
+  "usuarioPadrao": {
+    "nome": "Usuario Teste",
+    "email": "usuario@teste.com",
+    "senha": "teste123",
+    "administrador": false
+  },
+  "usuarioAdmin": {
+    "nome": "Admin Teste",
+    "email": "admin@teste.com",
+    "senha": "admin123",
+    "administrador": true
+  },
+  "novoUsuario": {
+    "nome": "Novo Usuario",
+    "senha": "senha123",
+    "administrador": false
+  }
+}
+
+
+

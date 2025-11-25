@@ -1,0 +1,45 @@
+{
+  "name": "mouts-challenge-cypress",
+  "version": "1.0.0",
+  "description": "Testes automatizados E2E com Cypress para ServeRest",
+  "main": "index.js",
+  "scripts": {
+    "cy:open": "cypress open",
+    "cy:run": "cypress run --browser electron",
+    "cy:run:chrome": "cypress run --browser chrome --headless",
+    "cy:run:report": "cypress run && npm run generate:report",
+    "clean:reports": "rm -rf cypress/reports",
+    "generate:report": "node cypress/support/generate-report.js",
+    "test": "cypress open",
+    "test:cadastro": "cypress run --spec 'cypress/e2e/cadastro/**/*.feature'",
+    "test:login": "cypress run --spec 'cypress/e2e/login/**/*.feature'",
+    "test:compra": "cypress run --spec 'cypress/e2e/fluxo-compra/**/*.feature'",
+    "test:e2e": "cypress run --browser chrome --headless --spec 'cypress/e2e/cadastro/**/*.feature,cypress/e2e/login/**/*.feature,cypress/e2e/fluxo-compra/**/*.feature'",
+    "test:e2e:report": "npm run test:e2e && npm run generate:report",
+    "test:api": "cypress run --spec 'cypress/e2e/api/**/*.feature'",
+    "test:api:usuarios": "cypress run --spec 'cypress/e2e/api/usuarios/**/*.feature'",
+    "test:api:produtos": "cypress run --spec 'cypress/e2e/api/produtos/**/*.feature'",
+    "test:api:report": "npm run test:api && npm run generate:report",
+    "test:all": "cypress run --browser chrome --headless --spec 'cypress/e2e/**/*.feature'",
+    "test:all:report": "npm run test:all && npm run generate:report",
+    "generate:client-doc": "node generate-client-document.js"
+  },
+  "keywords": [
+    "cypress",
+    "e2e",
+    "testing",
+    "automation"
+  ],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@badeball/cypress-cucumber-preprocessor": "^23.2.1",
+    "@bahmutov/cypress-esbuild-preprocessor": "^2.2.7",
+    "cypress": "13.6.0",
+    "cypress-mochawesome-reporter": "^3.8.0",
+    "docx": "^9.5.1",
+    "esbuild": "^0.27.0",
+    "mochawesome-merge": "^4.4.1",
+    "mochawesome-report-generator": "^6.3.2"
+  }
+}
