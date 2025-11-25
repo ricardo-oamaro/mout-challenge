@@ -1,12 +1,3 @@
-// ***********************************************
-// Custom API commands for ServeRest automation
-// ***********************************************
-
-/**
- * Comando customizado para autenticação via API
- * @param {string} email - Email do usuário
- * @param {string} password - Senha do usuário
- */
 Cypress.Commands.add('apiLogin', (email, password) => {
   return cy.request({
     method: 'POST',
@@ -24,12 +15,7 @@ Cypress.Commands.add('apiLogin', (email, password) => {
   });
 });
 
-/**
- * Comando customizado para criar usuário via API
- * @param {object} userData - Dados do usuário (nome, email, password, administrador)
- */
 Cypress.Commands.add('apiCreateUser', (userData) => {
-  // Ensure administrador is sent as string (API requirement)
   const payload = {
     ...userData,
     ...(userData.administrador !== undefined && { administrador: String(userData.administrador) }),
@@ -43,11 +29,6 @@ Cypress.Commands.add('apiCreateUser', (userData) => {
   });
 });
 
-/**
- * Comando customizado para criar produto via API
- * @param {object} productData - Dados do produto (nome, preco, descricao, quantidade)
- * @param {string} authToken - Token de autenticação
- */
 Cypress.Commands.add('apiCreateProduct', (productData, authToken) => {
   return cy.request({
     method: 'POST',
@@ -60,9 +41,6 @@ Cypress.Commands.add('apiCreateProduct', (productData, authToken) => {
   });
 });
 
-/**
- * Gerar email único usando timestamp para testes de API
- */
 Cypress.Commands.add('apiGenerateUniqueEmail', () => {
   const timestamp = Date.now();
   const random = Math.floor(Math.random() * 1000);

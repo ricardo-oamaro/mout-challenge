@@ -2,16 +2,12 @@ const { Document, Packer, Paragraph, TextRun, HeadingLevel, AlignmentType } = re
 const fs = require('fs');
 const path = require('path');
 
-/**
- * Gera documento DOCX profissional para apresentação ao cliente
- */
 function generateClientDocument() {
   const doc = new Document({
     sections: [
       {
         properties: {},
         children: [
-          // Título Principal
           new Paragraph({
             text: "Projeto de Automação de Testes - ServeRest",
             heading: HeadingLevel.TITLE,
@@ -19,7 +15,6 @@ function generateClientDocument() {
             spacing: { after: 400 },
           }),
           
-          // Subtítulo
           new Paragraph({
             text: "Evolução, Escalabilidade e Plano de Melhorias",
             heading: HeadingLevel.HEADING_2,
@@ -27,7 +22,6 @@ function generateClientDocument() {
             spacing: { after: 600 },
           }),
 
-          // Sumário Executivo
           new Paragraph({
             text: "Sumário Executivo",
             heading: HeadingLevel.HEADING_1,
@@ -44,7 +38,6 @@ function generateClientDocument() {
             spacing: { after: 400 },
           }),
 
-          // Estado Atual do Projeto
           new Paragraph({
             text: "Estado Atual do Projeto",
             heading: HeadingLevel.HEADING_1,
@@ -146,7 +139,6 @@ function generateClientDocument() {
             spacing: { after: 200 },
           }),
 
-          // Evolução do Projeto
           new Paragraph({
             text: "Evolução do Projeto",
             heading: HeadingLevel.HEADING_1,
@@ -281,7 +273,6 @@ function generateClientDocument() {
             spacing: { after: 200 },
           }),
 
-          // Estratégia de Escalabilidade
           new Paragraph({
             text: "Estratégia de Escalabilidade",
             heading: HeadingLevel.HEADING_1,
@@ -407,7 +398,6 @@ function generateClientDocument() {
             spacing: { after: 200 },
           }),
 
-          // Plano de Melhorias Futuras
           new Paragraph({
             text: "Plano de Melhorias Futuras",
             heading: HeadingLevel.HEADING_1,
@@ -566,7 +556,6 @@ function generateClientDocument() {
             spacing: { after: 200 },
           }),
 
-          // Investimento e ROI
           new Paragraph({
             text: "Investimento e Retorno sobre Investimento (ROI)",
             heading: HeadingLevel.HEADING_1,
@@ -641,7 +630,6 @@ function generateClientDocument() {
             spacing: { after: 200 },
           }),
 
-          // Conclusão
           new Paragraph({
             text: "Conclusão",
             heading: HeadingLevel.HEADING_1,
@@ -667,7 +655,6 @@ function generateClientDocument() {
     ],
   });
 
-  // Gerar arquivo DOCX
   Packer.toBuffer(doc).then((buffer) => {
     const outputPath = path.join(__dirname, 'Projeto_Automatizacao_Testes_ServeRest.docx');
     fs.writeFileSync(outputPath, buffer);
@@ -678,6 +665,5 @@ function generateClientDocument() {
   });
 }
 
-// Executar geração do documento
 generateClientDocument();
 

@@ -1,33 +1,6 @@
-# Dependências
 node_modules/
-package-lock.json
-
-# Cypress
 cypress/videos/
 cypress/screenshots/
-cypress/reports/
 cypress/downloads/
-
-# Sistema
 .DS_Store
-*.log
-.env
-.env.local
-
-# IDEs
-.idea/
-.vscode/
-*.swp
-*.swo
-*~
-
-# Arquivos temporários
-*.tmp
-*.temp
-
-# Documentos gerados (opcional - remova se quiser versionar)
 *.docx
-
-# Extensões e configurações do Cursor
-.cursor/
-~/.cursor/

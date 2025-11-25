@@ -1,4 +1,3 @@
-// Locators da página de cadastro
 const cadastroLocators = {
   nomeInput: 'input[data-testid="nome"]',
   emailInput: 'input[data-testid="email"]',
