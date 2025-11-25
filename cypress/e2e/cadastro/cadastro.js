@@ -1,5 +1,6 @@
 import { Given, When, Then, Before } from '@badeball/cypress-cucumber-preprocessor';
 
+// Locators da página de cadastro
 const cadastroLocators = {
   nomeInput: 'input[data-testid="nome"]',
   emailInput: 'input[data-testid="email"]',

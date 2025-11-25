@@ -1,5 +1,6 @@
 import { Given, When, Then, Before } from '@badeball/cypress-cucumber-preprocessor';
 
+// Locators do fluxo de compra
 const fluxoCompraLocators = {
   cardBody: ':nth-child(1) > .card-body',
   adicionarNaListaButton: '[data-testid="adicionarNaLista"]',
@@ -9,6 +10,7 @@ const fluxoCompraLocators = {
   logoutButton: '[data-testid="logout"]',
 };
 
+// Locators da página de login (reutilizado)
 const loginLocators = {
   emailInput: 'input[data-testid="email"]',
   senhaInput: 'input[data-testid="senha"]',
@@ -23,13 +25,17 @@ let senha;
 Before(() => {
   cy.fixture('usuarios').then((data) => {
     usuario = data.novoUsuario;
+    // Gera email único usando timestamp (síncrono)
     const timestamp = Date.now();
     emailUnico = `usuario${timestamp}@teste.com`;
     senha = usuario.senha;
     
+    // Cadastra usuário usando comando com await implícito
     cy.cadastrarUsuario(usuario.nome, emailUnico, senha, usuario.administrador);
     cy.visit('/login');
     cy.login(emailUnico, senha);
+    // cy.get(loginLocators.logoutButton).should('exist');
+    // cy.visit('/home');
   });
 });
 

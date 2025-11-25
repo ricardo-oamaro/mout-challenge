@@ -273,6 +273,7 @@ function generateClientDocument() {
             spacing: { after: 200 },
           }),
 
+          // Estratégia de Escalabilidade
           new Paragraph({
             text: "Estratégia de Escalabilidade",
             heading: HeadingLevel.HEADING_1,
@@ -556,6 +557,7 @@ function generateClientDocument() {
             spacing: { after: 200 },
           }),
 
+          // Investimento e ROI
           new Paragraph({
             text: "Investimento e Retorno sobre Investimento (ROI)",
             heading: HeadingLevel.HEADING_1,
@@ -630,6 +632,7 @@ function generateClientDocument() {
             spacing: { after: 200 },
           }),
 
+          // Conclusão
           new Paragraph({
             text: "Conclusão",
             heading: HeadingLevel.HEADING_1,
@@ -655,6 +658,7 @@ function generateClientDocument() {
     ],
   });
 
+  // Gerar arquivo DOCX
   Packer.toBuffer(doc).then((buffer) => {
     const outputPath = path.join(__dirname, 'Projeto_Automatizacao_Testes_ServeRest.docx');
     fs.writeFileSync(outputPath, buffer);
@@ -665,5 +669,6 @@ function generateClientDocument() {
   });
 }
 
+// Executar geração do documento
 generateClientDocument();
 

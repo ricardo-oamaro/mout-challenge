@@ -1,3 +1,4 @@
+// Locators da página de login
 const loginLocators = {
   emailInput: 'input[data-testid="email"]',
   senhaInput: 'input[data-testid="senha"]',

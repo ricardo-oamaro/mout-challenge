@@ -1,3 +1,4 @@
+// Locators do fluxo de compra
 const fluxoCompraLocators = {
   cardBody: ':nth-child(1) > .card-body',
   adicionarNaListaButton: '[data-testid="adicionarNaLista"]',

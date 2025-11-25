@@ -33,6 +33,7 @@ module.exports = defineConfig({
         plugins: [require('@badeball/cypress-cucumber-preprocessor/esbuild').createEsbuildPlugin(config)],
       }));
       
+      // Configurar Mochawesome Reporter
       require('cypress-mochawesome-reporter/plugin')(on);
       
       return config;
