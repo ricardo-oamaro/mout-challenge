@@ -7,14 +7,13 @@ Given('I have valid user data', () => {
       ...payloads.userData,
       email: `usuario${timestamp}@teste.com`,
     };
-    cy.log(`Creating user with email: ${userData.email}`); // Log the email being used
+    cy.log(`Creating user with email: ${userData.email}`);
     cy.wrap(userData).as('userData');
   });
 });
 
 When('I send a POST request to {string}', (endpoint) => {
   cy.get('@userData').then((userData) => {
-    // Ensure administrador is sent as string (API requirement)
     const payload = {
       ...userData,
       administrador: String(userData.administrador),
@@ -28,11 +27,9 @@ When('I send a POST request to {string}', (endpoint) => {
       body: payload,
       failOnStatusCode: false,
     }).then((response) => {
-      // Log response for debugging
       cy.log(`Response status: ${response.status}`);
       cy.log(`Response body: ${JSON.stringify(response.body)}`);
       
-      // Log message (success or error) if present
       if (response.body && response.body.message) {
         if (response.status === 201) {
           cy.log(`✅ Success message from API: ${response.body.message}`);
@@ -48,12 +45,10 @@ When('I send a POST request to {string}', (endpoint) => {
 
 Then('I should receive status code {int}', (statusCode) => {
   cy.get('@apiResponse').then((response) => {
-    // Adiciona log da resposta de erro para facilitar o debug
     if (response.status !== statusCode) {
       cy.log(`❌ Erro: Status code inesperado. Esperado: ${statusCode}, Recebido: ${response.status}`);
       cy.log(`Corpo da resposta: ${JSON.stringify(response.body)}`);
       
-      // Log error message if present
       if (response.body && response.body.message) {
         cy.log(`❌ Mensagem de erro da API: ${response.body.message}`);
       }
@@ -64,21 +59,17 @@ Then('I should receive status code {int}', (statusCode) => {
 
 Then('the response body should contain the created user data', () => {
   cy.get('@apiResponse').then((response) => {
-    // First verify status is 201
     if (response.status === 201) {
-      // Verify response body structure matches API format: { message, _id }
       expect(response.body).to.have.property('message');
       expect(response.body.message).to.eq('Cadastro realizado com sucesso');
       expect(response.body).to.have.property('_id');
       expect(response.body._id).to.be.a('string').and.not.be.empty;
       cy.log(`✅ User created successfully with ID: ${response.body._id}`);
     } else {
-      // Log error message when status is not 201
       cy.log(`❌ Status code não é 201. Status recebido: ${response.status}`);
       if (response.body && response.body.message) {
         cy.log(`❌ Mensagem de erro da API: ${response.body.message}`);
       }
-      // Fail the test with a descriptive error
       throw new Error(`Expected status 201 but got ${response.status}. Error message: ${response.body?.message || 'No error message'}`);
     }
   });
@@ -86,7 +77,6 @@ Then('the response body should contain the created user data', () => {
 
 Then('the "_id" field should be present in the response', () => {
   cy.get('@apiResponse').then((response) => {
-    // Log for debugging
     if (response.status !== 201) {
       cy.log(`❌ Status code não é 201. Status recebido: ${response.status}`);
       if (response.body && response.body.message) {
@@ -98,8 +88,6 @@ Then('the "_id" field should be present in the response', () => {
     expect(response.body._id).to.be.a('string').and.not.be.empty;
   });
 });
-
-// Steps for negative scenarios
 
 let duplicateEmail;
 
@@ -120,7 +108,7 @@ When('I send a POST request to {string} with the same email', (endpoint) => {
   cy.fixture('api/payloads').then((payloads) => {
     const payload = {
       ...payloads.userData,
-      nome: "Test Duplicado", // Different name, same email
+      nome: "Test Duplicado",
       email: duplicateEmail,
       administrador: String(payloads.userData.administrador),
     };
@@ -145,14 +133,13 @@ Then('the response body should contain a duplicate email error message', () => {
 Given('I have user data with a missing mandatory field', () => {
   cy.fixture('api/payloads').then((payloads) => {
     const incompleteData = { ...payloads.userData };
-    delete incompleteData.nome; // Removing 'nome' as the mandatory field
+    delete incompleteData.nome;
     cy.wrap(incompleteData).as('incompleteData');
   });
 });
 
 When('I send a POST request to {string} with the incomplete data', (endpoint) => {
   cy.get('@incompleteData').then((incompleteData) => {
-    // Ensure administrador is sent as string if present
     const payload = {
       ...incompleteData,
       ...(incompleteData.administrador !== undefined && { administrador: String(incompleteData.administrador) }),

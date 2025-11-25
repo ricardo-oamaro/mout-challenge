@@ -1,5 +1,4 @@
-// Locators da página de cadastro
-const cadastroLocators = {
+export const cadastroLocators = {
   nomeInput: 'input[data-testid="nome"]',
   emailInput: 'input[data-testid="email"]',
   passwordInput: 'input[data-testid="password"]',
@@ -10,6 +9,4 @@ const cadastroLocators = {
   emailObrigatorio: '.form > :nth-child(4)',
   passwordObrigatorio: '.form > :nth-child(5)',
 };
-
-module.exports = { cadastroLocators };
 

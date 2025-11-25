@@ -4,3 +4,4 @@ cypress/screenshots/
 cypress/downloads/
 .DS_Store
 *.docx
+cypress/reports/
