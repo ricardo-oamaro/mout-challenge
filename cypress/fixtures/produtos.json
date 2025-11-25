@@ -1,0 +1,13 @@
+{
+  "produtos": [
+    {
+      "nome": "Produto Teste",
+      "preco": 100,
+      "descricao": "Produto para testes automatizados",
+      "quantidade": 10
+    }
+  ]
+}
+
+
+
